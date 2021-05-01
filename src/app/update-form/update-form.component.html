@@ -1,0 +1,91 @@
+<div class="container">
+
+    <form class="well form-horizontal" (ngSubmit)="onSubmit(f)" #f='ngForm'>
+        <fieldset>
+
+            <legend class="center">
+                <h2><b>Update Form</b></h2>
+            </legend><br>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input ngModel [ngClass]="{incorrect: boolName == false}" name="fname" placeholder="Name" class="form-control" type="text" (input)="checkName($event)">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input ngModel [ngClass]="{incorrect: boolEmail == false}" name="email" placeholder="E-Mail Address" class="form-control" type="text" (input)="checkEmail($event)">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Date of Birth</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                        <input ngModel name="dateOfBirth" placeholder="Name" class="form-control" type="date">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Contact No.</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input ngModel [ngClass]="{incorrect: boolPhno == false}" name="contactNo" placeholder="+91" class="form-control" type="text" (input)="checkPhno($event)">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Gender</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <label class="radio-inline" *ngFor="let gender of genders">
+    <input type="radio" name="gender" ngModel [value]="gender">{{gender}}
+  </label>
+                        <!-- <label class="radio-inline">
+    <input type="radio" name="optradio" ngModel>Female
+  </label> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4"><br>
+                    <button [disabled]="boolDisabled" type="submit" class="btn btn-warning">UPDATE <span class="glyphicon glyphicon-thumbs-up"></span></button>
+                </div>
+            </div>
+
+            <div class="alert alert-success" role="alert" *ngIf="status=='success'">
+                Data updated succesfully!
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngIf="status=='not_success'">
+                Data not updated succesfully!
+            </div>
+
+
+        </fieldset>
+    </form>
+</div>

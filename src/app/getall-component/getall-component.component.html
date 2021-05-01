@@ -1,0 +1,42 @@
+<div class="container">
+    <legend class="center">
+        <h2><b>Get Form</b></h2>
+    </legend><br>
+
+    <form class="well form-horizontal" (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">E-Mail</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input [ngClass]="{incorrect: boolEmail == false}" name="email" ngModel placeholder="E-Mail Address" class="form-control" type="text" (input)="checkEmail($event)">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4"><br>
+                <button [disabled]="boolDisabled" type="submit" class="btn btn-warning">SUBMIT <span class="glyphicon glyphicon-thumbs-up"></span></button>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="row" *ngIf="listhidden==false">
+        <div class="col-md-12">
+            <ul class="list-group">
+                <li class="list-group-item">{{user[1]}}</li>
+                <li class="list-group-item">{{user[2]}}</li>
+                <li class="list-group-item">{{user[3]}}</li>
+                <li class="list-group-item">{{user[4]}}</li>
+                <li class="list-group-item">{{user[5]}}</li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="gotTheData=='danger'">
+        Email not found!
+    </div>
+</div>
