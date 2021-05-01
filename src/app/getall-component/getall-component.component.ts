@@ -15,7 +15,7 @@ export class GetallComponentComponent implements OnInit {
   listhidden = true;
   gotTheData = '';
   email = "";
-  regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com$/;
+
   boolEmail = true;
   boolDisabled = false;
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class GetallComponentComponent implements OnInit {
 
   checkEmail(event: any) {
     this.email = event.target.value;
-    if (!this.email.match(this.regexEmail))
+    if (!this.email.match(Constants.REGEXEMAIL))
      this.boolEmail = false;
     else
      this.boolEmail = true;

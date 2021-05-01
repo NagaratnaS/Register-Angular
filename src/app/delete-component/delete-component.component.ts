@@ -14,7 +14,6 @@ export class DeleteComponentComponent implements OnInit {
   email = "";
   status = '';
 
-  regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com$/
 
   boolEmail = true;
   boolDisabled=true;
@@ -25,7 +24,7 @@ export class DeleteComponentComponent implements OnInit {
 
   checkEmail(event: any) {
     this.email = event.target.value;
-    if (!this.email.match(this.regexEmail))
+    if (!this.email.match(Constants.REGEXEMAIL))
      this.boolEmail = false;
     else
      this.boolEmail = true;
@@ -48,12 +47,12 @@ export class DeleteComponentComponent implements OnInit {
 
       if (responsedata == 'Deleted successfully'){
         this.status = 'success';
-        form.reset();
+        form.reset(); // clear the form values
       }
 
       else
        this.status = 'not_success';
-      console.log(this.status)
+
     })
   }
 

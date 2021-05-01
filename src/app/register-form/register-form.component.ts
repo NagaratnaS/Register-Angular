@@ -18,10 +18,8 @@ export class RegisterFormComponent implements OnInit {
   phno = 0;
   password="";
   confPass="";
-  regexName = /^[A-Za-z]+$/;
-  regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com$/
-  regexPhno = /^\d{4}$/;
-  regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,18}$/;
+
+
   boolName = true;
   boolEmail = true;
   boolPhno = true;
@@ -35,7 +33,7 @@ export class RegisterFormComponent implements OnInit {
 
   checkName(event: any) {
     this.name = event.target.value;
-    if (this.name.length < 3 || this.name.length > 10 || !this.name.match(this.regexName))
+    if (this.name.length < 3 || this.name.length > 10 || !this.name.match(Constants.REGEXNAME))
      this.boolName = false;
     else
      this.boolName =true;
@@ -44,7 +42,7 @@ export class RegisterFormComponent implements OnInit {
 
   checkEmail(event: any) {
     this.email = event.target.value;
-    if (!this.email.match(this.regexEmail))
+    if (!this.email.match(Constants.REGEXEMAIL))
      this.boolEmail = false;
     else
      this.boolEmail = true;
@@ -53,7 +51,7 @@ export class RegisterFormComponent implements OnInit {
 
   checkPhno(event: any) {
     this.phno = event.target.value;
-    if (!this.phno.toString().match(this.regexPhno))
+    if (!this.phno.toString().match(Constants.REGEXPHNO))
      this.boolPhno = false;
     else
      this.boolPhno = true;
@@ -62,7 +60,7 @@ export class RegisterFormComponent implements OnInit {
 
   checkPass(event: any) {
     this.password = event.target.value;
-    if (!this.password.match(this.regexPassword))
+    if (!this.password.match(Constants.REGEXPASSWORD))
      this.boolPass = false;
     else
      this.boolPass = true;

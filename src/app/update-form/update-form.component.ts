@@ -16,9 +16,6 @@ export class UpdateFormComponent implements OnInit {
   phno = 0;
   status = '';
 
-  regexName = /^[A-Za-z]+$/;
-  regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com$/
-  regexPhno = /^\d{4}$/;
   boolName = true;
   boolEmail = true;
   boolPhno = true;
@@ -29,7 +26,7 @@ export class UpdateFormComponent implements OnInit {
 
   checkName(event: any) {
     this.name = event.target.value;
-    if (this.name.length < 3 || this.name.length > 10 || !this.name.match(this.regexName))
+    if (this.name.length < 3 || this.name.length > 10 || !this.name.match(Constants.REGEXNAME))
      this.boolName = false;
     else
      this.boolName =true;
@@ -38,7 +35,7 @@ export class UpdateFormComponent implements OnInit {
 
   checkEmail(event: any) {
     this.email = event.target.value;
-    if (!this.email.match(this.regexEmail))
+    if (!this.email.match(Constants.REGEXEMAIL))
      this.boolEmail = false;
     else
      this.boolEmail = true;
@@ -47,7 +44,7 @@ export class UpdateFormComponent implements OnInit {
 
   checkPhno(event: any) {
     this.phno = event.target.value;
-    if (!this.phno.toString().match(this.regexPhno))
+    if (!this.phno.toString().match(Constants.REGEXPHNO))
      this.boolPhno = false;
     else
      this.boolPhno = true;
@@ -64,7 +61,7 @@ export class UpdateFormComponent implements OnInit {
     form.value.contactNo = parseInt(form.value.contactNo);
     this.http.put(Constants.API + "updatebyemail", form.value, {responseType: "text"}).subscribe(
       responsedata => {
-        console.log(responsedata);
+
         if (responsedata == "updated successfully"){
           this.status = 'success';
          form.reset();
