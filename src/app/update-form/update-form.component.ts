@@ -61,13 +61,11 @@ export class UpdateFormComponent implements OnInit {
     form.value.contactNo = parseInt(form.value.contactNo);
     this.http.put(Constants.API + "updatebyemail", form.value, {responseType: "text"}).subscribe(
       responsedata => {
-
-        if (responsedata == "updated successfully"){
           this.status = 'success';
          form.reset();
-        }
-        else
-         this.status = 'not_success';
+        
+      }, error => {
+        this.status = 'not_success';
       }
     )
   }

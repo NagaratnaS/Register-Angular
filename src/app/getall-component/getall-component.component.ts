@@ -17,7 +17,7 @@ export class GetallComponentComponent implements OnInit {
   email = "";
 
   boolEmail = true;
-  boolDisabled = false;
+  boolDisabled = true;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class GetallComponentComponent implements OnInit {
   }
 
   checkButton() {
-    this.boolDisabled = !this.email;
+    this.boolDisabled = !this.boolEmail;
   }
 
   onSubmit(form: NgForm) {
@@ -56,6 +56,9 @@ export class GetallComponentComponent implements OnInit {
        this.gotTheData = 'danger';
 
 
+    }, error => {
+      this.listhidden = true;
+      this.gotTheData = 'danger';
     })
   }
 

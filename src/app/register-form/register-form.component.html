@@ -95,15 +95,15 @@
             </div>
         </div>
 
-        <div class="alert alert-success" role="alert" *ngIf="status=='success'; else unsuccess;">
+        <div class="alert alert-success" role="alert" *ngIf="status=='success';">
             Data added succesfully!
         </div>
 
-        <ng-template #unsuccess>
-            <div class="alert alert-danger" role="alert" *ngIf="status=='success'">
+        
+            <div class="alert alert-danger" role="alert" *ngIf="status=='not_success'">
                 Data not added succesfully!
             </div>
-        </ng-template>
+       
 
 
     </form>

@@ -83,12 +83,13 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     form.value.contactNo = parseInt(form.value.contactNo)
-    this.http.post(Constants.API + "save", form.value, {responseType: 'text'}).subscribe(responsedata => {
-      if (responsedata == 'data saved successfully')
-       this.status = 'success';
-      else
-       this.status = 'not success';
+    this.http.post(Constants.API + "save", form.value, {responseType: 'text'} )
+    .subscribe(responsedata => {
+      this.status = 'success';
       form.reset();
+    }, error => {
+      this.status = 'not_success';
+      console.log(error);
     });
 
   }

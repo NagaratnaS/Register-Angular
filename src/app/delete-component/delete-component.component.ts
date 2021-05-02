@@ -45,14 +45,12 @@ export class DeleteComponentComponent implements OnInit {
       responseType: 'text'
     }).subscribe(responsedata => {
 
-      if (responsedata == 'Deleted successfully'){
         this.status = 'success';
         form.reset(); // clear the form values
-      }
+      
 
-      else
-       this.status = 'not_success';
-
+    }, error => {
+      this.status = 'not_success';
     })
   }
 
